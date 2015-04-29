@@ -14,4 +14,6 @@
        (fact "4"
              (add "//;\n1;2") => 3)
        (fact "5"
-             (add "1,-2,3,-4") => (throws Exception "-2 -4")))
+             (add "1,-2,3,-4") => (throws Exception "-2 -4"))
+       (fact "6"
+             (add "2,1001") => 2))
