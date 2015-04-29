@@ -19,13 +19,11 @@
     (map second d)
     [delimeters]))
 
-
 (defn str->delimeters-and-numbers-str [str-cmd]
   (if-let [g (re-seq #"^//(.+)\n(.+)" str-cmd)]
     (let [[dels nums]  (rest (first g))]
       [(extract-delimeters dels) nums])
     [[] str-cmd]))
-
 
 (defn extract-numbers [str-cmd]
   (let [[delimeters str-nums] (str->delimeters-and-numbers-str str-cmd)]
@@ -33,8 +31,7 @@
 
 (defn check-pos [numbers]
   (if (some neg? numbers)
-    (throw (Exception. (str/join " " (filter neg? numbers))))
-    ))
+    (throw (Exception. (str/join " " (filter neg? numbers))))))
 
 (defn add [str-cmd]
   (let [numbers (filter #(< % 1000) (extract-numbers str-cmd))]
