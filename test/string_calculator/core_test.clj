@@ -2,9 +2,16 @@
   (:use midje.sweet)
   (:use [string-calculator.core]))
 
-(println "You should expect to see three failures below.")
-
 (facts "string calculator"
-  (fact "1"
-    (add "") => 0
-    ))
+       (fact "1"
+             (add "") => 0
+             (add "1") => 1
+             (add "1,2") => 3)
+       (fact "2"
+             (add "1,2,3,4,5") => 15)
+       (fact "3"
+             (add "1\n2,3") => 6)
+       (fact "4"
+             (add "//;\n1;2") => 3)
+       (fact "5"
+             (add "1,-2,3,-4") => (throws Exception "-2 -4")))
